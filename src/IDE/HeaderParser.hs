@@ -76,7 +76,7 @@ transformImport (L srcSpan importDecl) =
                         Just (hide, list) -> Just (ImportSpecList hide (mapMaybe transformEntity list))
 
 transformEntity :: LIE RdrName -> Maybe ImportSpec
-#if MIN_VERSION_ghc(7,2,0)
+#if MIN_VERSION_ghc(7,4,1)
 transformEntity (L _ (IEVar name))              = Just (IVar (showSDoc (pprPrefixOcc name)))
 #else
 transformEntity (L _ (IEVar name))              = Just (IVar (showSDoc (pprHsVar name)))
